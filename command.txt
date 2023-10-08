@@ -1,0 +1,44 @@
+Create a user with user group
+sudo useradd devops
+
+Create two directories in user's home directory named os-concepts and ubuntu-is-the-best
+mkdir os-concepts
+mkdir os-concepts
+
+Create two files on each directory
+cd os-concepts/
+touch file1.txt
+touch file2.txt
+cd ubuntu-is-the-best/
+touch file3.txt
+touch file4.txt
+
+List the files with detailed information ( including file permission )
+ls - l os-concepts
+ls -l ubuntu-is-the-best
+
+Update file permission so that owner can read,write and group can only read and others can not do anything
+cd os-concepts/
+chmod 640 file1.txt
+chmod 640 file1.txt
+cd ubuntu-is-the-best/
+chmod 640 file3.txt
+chmod 640 file4.txt
+
+Create another group
+sudo groupadd another_group
+
+Update file ownership to the newly created group
+sudo chown :another_group *.txt
+
+Add the user to the new group
+tail -3 /etc/group
+sudo usermod pias-devops -g 1002
+
+Create a file called crash.in ( File should contain the word crash in it ) in different directories and then find the file in all the locations using find command
+echo "crash" > ~/devops/linux/os-concepts/crash.in
+find ~/devops/linux/os-concepts -name "crash.in"
+
+Then, replace the lines with crash to broken to all files ( use sed, xargs )
+sed -i 's/crash/broken/g' crash.in
+sed -i 's/crash/broken/g' crash.in
